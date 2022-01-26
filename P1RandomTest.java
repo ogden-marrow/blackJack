@@ -1,10 +1,28 @@
+import java.io.File; // Import the File class
+import java.io.IOException; // Import the IOException class to handle errors
+
 public class P1RandomTest {
     public static void main(String[] args) {
         P1Random rng = new P1Random();
         for (int i = 0; i < 1000; i++) {
-            System.out.println(numberToFaceCard(rng.nextInt(13)+1));
+            System.out.println(numberToFaceCard(rng.nextInt(13) + 1));
         }
     }
+
+    public static void makeFile(String fileName, String[] data) throws IOException {
+        try {
+            File myObj = new File("filename.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     public static String numberToFaceCard(int num) {
         if (num == 1) {
             return "ACE";
