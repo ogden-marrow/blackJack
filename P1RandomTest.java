@@ -6,12 +6,12 @@ public class P1RandomTest {
     public static void main(String[] args) throws IOException {
         P1Random rng = new P1Random();
         String fileName = "P1RandomTest";
-        String data = "";
+        StringBuilder data = new StringBuilder();
         for (int i = 0; i < 20; i++) {
-            int myNumber = rng.nextInt(13) + 1; 
-            data = data + numberToFaceCard(myNumber) + "\n";
+            int myNumber = rng.nextInt(13) + 1;
+            data.append(numberToFaceCard(myNumber)).append("\n");
         }
-        makeFile(fileName, data);
+        makeFile(fileName, data.toString());
     }
 
     public static void makeFile(String fileName, String data) throws IOException {

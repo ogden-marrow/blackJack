@@ -42,7 +42,8 @@ public class Blackjack {
                     out.println("Your hand is: " + Arrays.stream(hand).parallel().reduce(0, Integer::sum) + "\n");
                     break;
                 case "2":
-                    switch (HoldHand(hand)) {
+                    int dealerHand = rng.nextInt(11) + 16;;
+                    switch (HoldHand(hand, dealerHand)) {
                         case 0:
                             gameStats.losses++;
                             break;
