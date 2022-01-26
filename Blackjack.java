@@ -4,10 +4,10 @@ import static java.lang.System.*;
 import static java.lang.System.exit;
 
 class GameStats {
-    int wins;
-    int losses;
-    int ties;
-    int totalGames;
+    double wins;
+    double losses;
+    double ties;
+    double totalGames;
 }
 
 public class Blackjack {
@@ -129,9 +129,15 @@ public class Blackjack {
         if (handSum == 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
             out.print("You win!\n");
             return 0;
+        } else if (DHandTotal > 21) { // this is the dealer winning condition
+            out.println("Dealer wins!\n");
+            return 1;
         } else if (handSum > 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
             out.println("Dealer wins!\n");
             return 1;
+        } else if (handSum > DHandTotal) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+            out.print("You win!\n");
+            return 0;
         } else if (handSum < DHandTotal) { // this is the dealer winning condition
             out.println("Dealer wins!\n");
             return 1;
@@ -142,10 +148,11 @@ public class Blackjack {
     }
 
     public static String[] TakeInput() {
-        try (/*
-              * take input
-              * This function needs to be completed.
-              */
+        try (
+                /*
+                 * take input
+                 * This function needs to be completed.
+                 */
                 Scanner scanner = new Scanner(in)) {
             return scanner.nextLine().split(" ");
         }
