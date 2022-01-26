@@ -24,7 +24,6 @@ public class Blackjack {
         // Start initialize variables
         P1Random rng = new P1Random();
         int[] hand = new int[0];
-        int winFlag;
         String menuChose;
         GameStats gameStats = new GameStats();
         // End initialize variables
@@ -43,8 +42,7 @@ public class Blackjack {
                     out.println("Your hand is: " + Arrays.stream(hand).parallel().reduce(0, Integer::sum) + "\n");
                     break;
                 case "2":
-                    winFlag = HoldHand(hand);
-                    switch (winFlag) {
+                    switch (HoldHand(hand)) {
                         case 0:
                             gameStats.losses++;
                             break;
@@ -120,8 +118,24 @@ public class Blackjack {
         out.println("Percentage of Player wins: " + gameStats.winPercentage + "%");
     }
 
-    public static int HoldHand(int[] hand) {
-        return 0;
+    public static int HoldHand(int[] hand, int dealerHand) {
+        int handTotal = Arrays.stream(hand).parallel().reduce(0, Integer::sum);
+        if (handTotal == 21) { // if the player has 21, they win
+            out.println("You got a blackjack! You win!");
+            return 0;
+        } else if (dealerHand > 21) { // the player wins if the dealer busts
+            out.println("You busted! You lose!");
+            return 1;
+        } else if (dealerHand > handTotal) { // the player loses if the dealer has a higher hand
+            out.println("You lost! The dealer has a higher hand.");
+            return 1;
+        } else if (dealerHand < handTotal) { // the player wins if the dealer has a lower hand
+            out.println("You won! The dealer has a lower hand.");
+            return 0;
+        } else { // the player ties if the dealer has the same hand
+            out.println("You tied! The dealer has the same hand.");
+            return 2;
+        }
     }
 
     public static String[] TakeInput() {
