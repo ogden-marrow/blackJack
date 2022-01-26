@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Scanner;
-
 import static java.lang.System.*;
 import static java.lang.System.exit;
 
@@ -127,10 +126,12 @@ public class Blackjack {
         int DHandTotal = rng.nextInt(11) + 16; // this is the dealers hand total
         out.println("Dealer's hand: " + DHandTotal);
         out.println("Your hand is: " + handSum); // this is the players hand total
-        if (handSum > 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
-            String StringOUT = "You win!\n";
-            out.println(StringOUT);
+        if (handSum == 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+            out.print("You win!\n");
             return 0;
+        } else if (handSum > 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+            out.println("Dealer wins!\n");
+            return 1;
         } else if (handSum < DHandTotal) { // this is the dealer winning condition
             out.println("Dealer wins!\n");
             return 1;

@@ -1,22 +1,39 @@
 import java.io.File; // Import the File class
 import java.io.IOException; // Import the IOException class to handle errors
+import java.io.FileWriter;
 
 public class P1RandomTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         P1Random rng = new P1Random();
-        for (int i = 0; i < 1000; i++) {
-            System.out.println(numberToFaceCard(rng.nextInt(13) + 1));
+        String fileName = "P1RandomTest";
+        String data = "";
+        for (int i = 0; i < 20; i++) {
+            data  = data + numberToFaceCard(rng.nextInt(13) + 1) + "\n";
         }
+        makeFile(fileName, data);
     }
 
-    public static void makeFile(String fileName, String[] data) throws IOException {
+    public static void makeFile(String fileName, String data) throws IOException {
         try {
-            File myObj = new File("filename.txt");
+            File myObj = new File(fileName + ".txt");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
                 System.out.println("File already exists.");
             }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        writeToFile(data, fileName);
+    }
+
+    public static void writeToFile(String data, String fileName) throws IOException {
+        try {
+            FileWriter myWriter = new FileWriter(fileName + ".txt");
+            myWriter.write(data);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

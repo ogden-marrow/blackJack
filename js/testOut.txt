@@ -138,10 +138,10 @@ Your hand is: 13
 4. Exit
 
 Choose an option: 
-Dealer's hand: 21
-Your hand is: 13
+Your card is a KING!
+Your hand is: 23
 
-Dealer wins!
+You exceeded 21! You lose.
 
 START GAME #5
 
@@ -163,10 +163,10 @@ Your hand is: 20
 4. Exit
 
 Choose an option: 
-Your card is a 4!
-Your hand is: 24
+Dealer's hand: 25
+Your hand is: 20
 
-You exceeded 21! You lose.
+You win!
 
 START GAME #6
 
@@ -179,38 +179,11 @@ Your hand is: 5
 4. Exit
 
 Choose an option: 
-Invalid input!
-Please enter an integer value between 1 and 4.
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option: 
-Invalid input!
-Please enter an integer value between 1 and 4.
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option: 
-Invalid input!
-Please enter an integer value between 1 and 4.
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option: 
-Number of Player wins: 2
-Number of Dealer wins: 2
+Number of Player wins: 3
+Number of Dealer wins: 1
 Number of tie games: 1
 Total # of games played is: 5
-Percentage of Player wins: 40.0%
+Percentage of Player wins: 60.0%
 
 1. Get another card
 2. Hold hand
