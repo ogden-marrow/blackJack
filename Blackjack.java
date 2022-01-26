@@ -34,20 +34,28 @@ public class Blackjack {
                     out.println("Your hand is: " + Arrays.stream(hand).parallel().reduce(0, Integer::sum) + "\n");
                     break;
                 case "2":
-                    winFlag = HoldHand(hand);
-                    switch (winFlag) {
-                        case 0:
-                            gameStats.wins++;
-                            break;
-                        case 1:
-                            gameStats.losses++;
-                            break;
-                        case 2:
-                            gameStats.ties++;
-                            break;
+                    for (int i = 0; i < hand.length; i++) {
+                        if (hand[i] <= 11) {
+                            hand[i] = 10;
+                        }
                     }
-                    gameStats.totalGames++;
-                    hand = new int[0];
+                    int handSum = Arrays.stream(hand).parallel().reduce(0, Integer::sum); // this mess is to get the sum of the hand
+                    int DHandTotal = rng.nextInt(11) + 16; // this is the dealers hand total
+                    out.println("Dealer's hand: " + DHandTotal);
+                    out.println("Your hand is: " + handSum); // this is the players hand total
+                    if (handSum == 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+                        out.print("You win!\n");
+                    } else if (DHandTotal > 21) { // this is the dealer winning condition
+                        out.println("Dealer wins!\n");
+                    } else if (handSum > 21) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+                        out.println("Dealer wins!\n");
+                    } else if (handSum > DHandTotal) { // this is the player winning condition FOR SOME REASON THIS DOES NOT WORK
+                        out.print("You win!\n");
+                    } else if (handSum < DHandTotal) { // this is the dealer winning condition
+                        out.println("Dealer wins!\n");
+                    } else { // this is the tie condition
+                        out.println("It's a tie! No one wins!\n");
+                    }
                     out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
                     break;
                 case "3":
@@ -116,13 +124,13 @@ public class Blackjack {
          * and text add to it.
          * !!!!! FOR SOME REASON THE HAND DOES NOT WORK WITH THE 21 RULE.
          */
+        P1Random rng = new P1Random();
         for (int i = 0; i < hand.length; i++) {
             if (hand[i] <= 11) {
                 hand[i] = 10;
             }
         }
         int handSum = Arrays.stream(hand).parallel().reduce(0, Integer::sum); // this mess is to get the sum of the hand
-        P1Random rng = new P1Random();
         int DHandTotal = rng.nextInt(11) + 16; // this is the dealers hand total
         out.println("Dealer's hand: " + DHandTotal);
         out.println("Your hand is: " + handSum); // this is the players hand total

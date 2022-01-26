@@ -8,7 +8,8 @@ public class P1RandomTest {
         String fileName = "P1RandomTest";
         String data = "";
         for (int i = 0; i < 20; i++) {
-            data  = data + numberToFaceCard(rng.nextInt(13) + 1) + "\n";
+            int myNumber = rng.nextInt(13) + 1; 
+            data = data + numberToFaceCard(myNumber) + "\n";
         }
         makeFile(fileName, data);
     }
