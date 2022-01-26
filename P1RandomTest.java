@@ -30,15 +30,10 @@ public class P1RandomTest {
     }
 
     public static void writeToFile(String data, String fileName) throws IOException {
-        try {
-            FileWriter myWriter = new FileWriter(fileName + ".txt");
-            myWriter.write(data);
-            myWriter.close();
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+        FileWriter myWriter = new FileWriter(fileName + ".txt");
+        myWriter.write(data);
+        myWriter.close();
+        System.out.println("Successfully wrote to the file.");
     }
 
     public static String numberToFaceCard(int num) {
