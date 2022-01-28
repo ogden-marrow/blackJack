@@ -8,7 +8,7 @@ Your hand is: 5
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
 Your card is a 8!
 Your hand is: 13
 
@@ -17,8 +17,8 @@ Your hand is: 13
 3. Print statistics
 4. Exit
 
-Choose an option:
-Your card is a 1!
+Choose an option: 
+Your card is a 2!
 Your hand is: 15
 
 1. Get another card
@@ -26,7 +26,7 @@ Your hand is: 15
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
 Your card is a ACE!
 Your hand is: 16
 
@@ -35,124 +35,150 @@ Your hand is: 16
 3. Print statistics
 4. Exit
 
-Choose an option:
-Dealer's hand: 19
-Your hand is: 40
-Dealer wins!
+Choose an option: 
+Dealer's hand: 24
+Your hand is: 16
 
-START GAME #1
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Your card is a 4!
-Your hand is: 44
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Your card is a ACE!
-Your hand is: 45
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Your card is a KING!
-Your hand is: 58
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Your card is a KING!
-Your hand is: 71
-
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Dealer's hand: 19
-Your hand is: 86
-Dealer wins!
+You win!
 
 START GAME #2
 
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Your card is a 6!
-Your hand is: 92
+Your card is a ACE!
+Your hand is: 1
 
 1. Get another card
 2. Hold hand
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
 Your card is a KING!
-Your hand is: 105
+Your hand is: 11
 
 1. Get another card
 2. Hold hand
 3. Print statistics
 4. Exit
 
-Choose an option:
-Your card is a 3!
-Your hand is: 108
+Choose an option: 
+Your card is a KING!
+Your hand is: 21
 
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
-Dealer's hand: 19
-Your hand is: 119
-Dealer wins!
+BLACKJACK! You win!
 
 START GAME #3
 
-1. Get another card
-2. Hold hand
-3. Print statistics
-4. Exit
-
-Choose an option:
 Your card is a 6!
-Your hand is: 125
+Your hand is: 6
 
 1. Get another card
 2. Hold hand
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
+Your card is a KING!
+Your hand is: 16
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Your card is a 3!
+Your hand is: 19
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Dealer's hand: 19
+Your hand is: 19
+
+It's a tie! No one wins!
+
+START GAME #4
+
 Your card is a 6!
-Your hand is: 131
+Your hand is: 6
 
 1. Get another card
 2. Hold hand
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
+Your card is a 2!
+Your hand is: 8
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Your card is a 2!
+Your hand is: 10
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Your card is a 3!
+Your hand is: 13
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Dealer's hand: 21
+Your hand is: 13
+
+Dealer wins!
+
+START GAME #5
+
+Your card is a KING!
+Your hand is: 10
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Your card is a KING!
+Your hand is: 20
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
+Your card is a 4!
+Your hand is: 24
+
+You exceeded 21! You lose.
+
+START GAME #6
+
+Your card is a 5!
+Your hand is: 5
+
+1. Get another card
+2. Hold hand
+3. Print statistics
+4. Exit
+
+Choose an option: 
 Invalid input!
 Please enter an integer value between 1 and 4.
 
@@ -161,7 +187,7 @@ Please enter an integer value between 1 and 4.
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
 Invalid input!
 Please enter an integer value between 1 and 4.
 
@@ -170,7 +196,7 @@ Please enter an integer value between 1 and 4.
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 
 Invalid input!
 Please enter an integer value between 1 and 4.
 
@@ -179,15 +205,16 @@ Please enter an integer value between 1 and 4.
 3. Print statistics
 4. Exit
 
-Choose an option:
-Number of Player wins: 3
-Number of Dealer wins: 0
-Number of tie games: 0
-Total # of games played is: 3
-Percentage of Player wins: 0.0%
+Choose an option: 
+Number of Player wins: 2
+Number of Dealer wins: 2
+Number of tie games: 1
+Total # of games played is: 5
+Percentage of Player wins: 40.0%
+
 1. Get another card
 2. Hold hand
 3. Print statistics
 4. Exit
 
-Choose an option:
+Choose an option: 

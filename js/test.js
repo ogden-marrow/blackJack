@@ -11,7 +11,7 @@ function getNames() {
     data.forEach(element => { element.match(re) ? names.push(element.replace(res, '')) : null; });
     names.forEach(element => { namess.push(element.replace(/!/, '')); });
     namess.forEach(element => { namess = namess + element + '\n'; });
-    fs.writeFileSync('js/testCaseFromTeach.txt', namess.toString());
+    fs.writeFileSync('js/test3.txt', namess.toString());
     console.log("Program Ended");
 }
 
