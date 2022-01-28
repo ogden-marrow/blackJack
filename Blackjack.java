@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.exit;
@@ -31,15 +30,15 @@ public class Blackjack {
         startUP(hand);
         String[] input = TakeInput();
         for (String s : input) {
-            menuChose = s;
             PrintMenu();
+            menuChose = s;
             // This switch is the main part of the program. Basically I have it set to call
             // the functions when they are required. It also handles the exit function.
             switch (menuChose) {
                 case "1":
                     hand = dArray(hand, rng.nextInt(13) + 1);
                     out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
-                    out.println("Your hand is: " + Arrays.stream(hand).parallel().reduce(0, Integer::sum) + "\n");
+                    out.println("Your hand is: " + addUpHand(hand) + "\n");
                     break;
                 case "2":
                     int dealerHand = rng.nextInt(11) + 16;
@@ -58,8 +57,12 @@ public class Blackjack {
                             out.println("Something went wrong. Please try again.");
                             break;
                     }
-                    out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
                     gameStats.totalGames++;
+                    out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                    hand = new int[0];
+                    hand = dArray(hand, rng.nextInt(13) + 1);
+                    out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
+                    out.println("Your hand is: " + addUpHand(hand) + "\n");
                     break;
                 case "3":
                     PrintStatistics(gameStats);
@@ -73,7 +76,7 @@ public class Blackjack {
         }
     }
 
-    public static int[] dArray(int[] array, int num) {
+    private static int[] dArray(int[] array, int num) {
         // this function is used to add dynamic array functionality to the problem
         int[] newArray = new int[array.length + 1];
         arraycopy(array, 0, newArray, 0, array.length);
@@ -81,17 +84,24 @@ public class Blackjack {
         return newArray;
     }
 
-    public static void startUP(int[] hand) {
+    private static int addUpHand(int[] hand) {
+        // this function is used to add up the hand
+        int outNum = 0;
+        for (int i : hand) {outNum += (i > 10) ? 10 : i;}
+        return outNum;
+    }
+
+    private static void startUP(int[] hand) {
         /*
          * print welcome message
          * This function is completed and does not need to be modified.
          */
         out.println("START GAME #1\n");
         out.println("Your card is a " + numberToFaceCard(hand[0]) + "!");
-        out.println("Your hand is: " + Arrays.stream(hand).parallel().reduce(0, Integer::sum) + "\n");
+        out.println("Your hand is: " + addUpHand(hand) + "\n");
     }
 
-    public static void PrintMenu() {
+    private static void PrintMenu() {
         /*
          * print menu
          * This function is completed and does not need to be modified.
@@ -103,7 +113,7 @@ public class Blackjack {
         out.println("Choose an option:");
     }
 
-    public static void PrintStatistics(GameStats gameStats) {
+    private static void PrintStatistics(GameStats gameStats) {
         /*
          * print statistics
          * This function needs to be completed.
@@ -120,10 +130,10 @@ public class Blackjack {
         out.println("Percentage of Player wins: " + gameStats.winPercentage + "%");
     }
 
-    public static int HoldHand(int[] hand, int dealerHand) {
-        int handTotal = Arrays.stream(hand).parallel().reduce(0, Integer::sum);
-        out.println("Dealer's hand:"+ dealerHand+ "\n");
-        out.print("Your hand is: "+ handTotal+"\n");
+    private static int HoldHand(int[] hand, int dealerHand) {
+        int handTotal = addUpHand(hand);
+        System.out.println("Dealer's hand: " + dealerHand);
+        System.out.println("Your hand is: " + handTotal + "\n");
         if (handTotal == 21) { // if the player has 21, they win
             out.println("You got a blackjack! You win!");
             return 0;
@@ -142,7 +152,7 @@ public class Blackjack {
         }
     }
 
-    public static String[] TakeInput() {
+    private static String[] TakeInput() {
         try (
                 /*
                  * take input
@@ -153,7 +163,7 @@ public class Blackjack {
         }
     }
 
-    public static String numberToFaceCard(int num) {
+    private static String numberToFaceCard(int num) {
         if (num == 1) {
             return "ACE";
         } else {
@@ -186,7 +196,7 @@ public class Blackjack {
         return "Invalid";
     }
 
-    public static void Exit() {
+    private static void Exit() {
 
         /*
          * exit
