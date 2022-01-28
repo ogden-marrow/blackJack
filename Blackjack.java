@@ -3,19 +3,10 @@ import static java.lang.System.*;
 import static java.lang.System.exit;
 
 class GameStats {
-    int wins;
-    int losses;
-    int ties;
-    int totalGames;
-    double winPercentage = winPercent();
-
-    private int winPercent() {
-        if (totalGames == 0) {
-            return 0;
-        } else {
-            return (wins / totalGames) * 100;
-        }
-    }
+    double wins;
+    double losses;
+    double ties;
+    double totalGames;
 }
 
 public class Blackjack {
@@ -39,11 +30,30 @@ public class Blackjack {
                     hand = dArray(hand, rng.nextInt(13) + 1);
                     out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
                     out.println("Your hand is: " + addUpHand(hand) + "\n");
+                    if (addUpHand(hand) == 21) {
+                        out.println("BLACKJACK! You win!\n");
+                        gameStats.wins++;
+                        gameStats.totalGames++;
+                        out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                        hand = new int[0];
+                        hand = dArray(hand, rng.nextInt(13) + 1);
+                        out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
+                        out.println("Your hand is: " + addUpHand(hand) + "\n");
+                    } else if (addUpHand(hand) > 21) {
+                        out.println("You exceeded 21! You lose.\n");
+                        gameStats.losses++;
+                        gameStats.totalGames++;
+                        out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                        hand = new int[0];
+                        hand = dArray(hand, rng.nextInt(13) + 1);
+                        out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
+                        out.println("Your hand is: " + addUpHand(hand) + "\n");
+                    }
                     break;
                 case "2":
                     int dealerHand = rng.nextInt(11) + 16;
-                    ;
-                    switch (HoldHand(hand, dealerHand)) {
+                    int testVal = HoldHand(addUpHand(hand), dealerHand);
+                    switch (testVal) {
                         case 0:
                             gameStats.losses++;
                             break;
@@ -84,10 +94,20 @@ public class Blackjack {
         return newArray;
     }
 
+    private static double winPercent(Double wins, Double totalGames) {
+        if (totalGames == 0) {
+            return 0;
+        } else {
+            return (wins / totalGames) * 100;
+        }
+    }
+
     private static int addUpHand(int[] hand) {
         // this function is used to add up the hand
         int outNum = 0;
-        for (int i : hand) {outNum += (i > 10) ? 10 : i;}
+        for (int i : hand) {
+            outNum += (i > 10) ? 10 : i;
+        }
         return outNum;
     }
 
@@ -123,33 +143,35 @@ public class Blackjack {
          * Total # of games played is: 5
          * Percentage of Player wins: 40.0%
          */
-        out.println("Number of Player wins: " + gameStats.wins);
-        out.println("Number of Dealer wins: " + gameStats.losses);
-        out.println("Number of tie games: " + gameStats.ties);
-        out.println("Total # of games played is: " + gameStats.totalGames);
-        out.println("Percentage of Player wins: " + gameStats.winPercentage + "%");
+        out.printf("Number of Player wins: %n\n", gameStats.wins);
+        out.printf("Number of Dealer wins: %n\n", gameStats.losses);
+        out.printf("Number of tie games: %n\n", gameStats.ties);
+        out.printf("Total # of games played is: %n\n", gameStats.totalGames);
+        out.printf("Percentage of Player wins: %.1f", winPercent(gameStats.wins, gameStats.totalGames));
+        out.println("%\n");
     }
 
-    private static int HoldHand(int[] hand, int dealerHand) {
-        int handTotal = addUpHand(hand);
+    private static int HoldHand(int handTotal, int dealerHand) {
+        int outVal = 0;
         System.out.println("Dealer's hand: " + dealerHand);
         System.out.println("Your hand is: " + handTotal + "\n");
-        if (handTotal == 21) { // if the player has 21, they win
-            out.println("You got a blackjack! You win!");
-            return 0;
-        } else if (dealerHand > 21) { // the player wins if the dealer busts
-            out.println("You win!\n");
-            return 1;
-        } else if (dealerHand > handTotal) { // the player loses if the dealer has a higher hand
-            out.println("You lost! The dealer has a higher hand.\n");
-            return 1;
-        } else if (dealerHand < handTotal) { // the player wins if the dealer has a lower hand
-            out.println("You won!\n");
-            return 0;
-        } else { // the player ties if the dealer has the same hand
-            out.println("You tied! The dealer has the same hand.\n");
-            return 2;
+        if (handTotal > 21) {
+            System.out.println("You exceeded 21! You lose\n");
+            outVal = 0;
+        } else if (dealerHand > 21) {
+            System.out.println("You win!\n");
+            outVal = 1;
+        } else if (handTotal < dealerHand) {
+            System.out.println("Dealer wins!\n");
+            outVal = 0;
+        } else if (handTotal > dealerHand) {
+            System.out.println("You win!\n");
+            outVal = 1;
+        } else {
+            System.out.println("It's a tie! No one wins!\n");
+            outVal = 2;
         }
+        return outVal;
     }
 
     private static String[] TakeInput() {
