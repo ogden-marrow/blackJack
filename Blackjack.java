@@ -34,7 +34,7 @@ public class Blackjack {
                         out.println("BLACKJACK! You win!\n");
                         gameStats.wins++;
                         gameStats.totalGames++;
-                        out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                        out.printf("START GAME #%.0f\n", (gameStats.totalGames + 1));
                         hand = new int[0];
                         hand = dArray(hand, rng.nextInt(13) + 1);
                         out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
@@ -43,7 +43,7 @@ public class Blackjack {
                         out.println("You exceeded 21! You lose.\n");
                         gameStats.losses++;
                         gameStats.totalGames++;
-                        out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                        out.printf("START GAME #%.0f\n",(gameStats.totalGames + 1));
                         hand = new int[0];
                         hand = dArray(hand, rng.nextInt(13) + 1);
                         out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
@@ -68,7 +68,7 @@ public class Blackjack {
                             break;
                     }
                     gameStats.totalGames++;
-                    out.println("START GAME #" + (gameStats.totalGames + 1) + "\n");
+                    out.printf("START GAME #%.0f\n",(gameStats.totalGames + 1));
                     hand = new int[0];
                     hand = dArray(hand, rng.nextInt(13) + 1);
                     out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
@@ -143,10 +143,10 @@ public class Blackjack {
          * Total # of games played is: 5
          * Percentage of Player wins: 40.0%
          */
-        out.printf("Number of Player wins: %n\n", gameStats.wins);
-        out.printf("Number of Dealer wins: %n\n", gameStats.losses);
-        out.printf("Number of tie games: %n\n", gameStats.ties);
-        out.printf("Total # of games played is: %n\n", gameStats.totalGames);
+        out.printf("Number of Player wins: %.0f\n", gameStats.wins);
+        out.printf("Number of Dealer wins: %.0f\n", gameStats.losses);
+        out.printf("Number of tie games: %.0f\n", gameStats.ties);
+        out.printf("Total # of games played is: %.0f\n", gameStats.totalGames);
         out.printf("Percentage of Player wins: %.1f", winPercent(gameStats.wins, gameStats.totalGames));
         out.println("%\n");
     }
