@@ -18,18 +18,8 @@ public class P1Random
         return (short) Math.abs(((next / 65536) % limit));
     }
 
-    private int nextInt()
-    {
-        return nextInt(Integer.MAX_VALUE);
-    }
-
     public int nextInt(int limit)
     {
         return ((((int) nextShort()) << 16) | ((int) nextShort())) % limit;
-    }
-
-    private double nextDouble()
-    {
-        return (double) nextInt() / (double) Integer.MAX_VALUE;
     }
 }
