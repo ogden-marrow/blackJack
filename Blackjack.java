@@ -2,6 +2,8 @@ import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.exit;
 
+// This is the Game Stats class.
+// It is has wins looses and ties.
 class GameStats {
     double wins;
     double losses;
@@ -43,7 +45,7 @@ public class Blackjack {
                         out.println("You exceeded 21! You lose.\n");
                         gameStats.losses++;
                         gameStats.totalGames++;
-                        out.printf("START GAME #%.0f\n",(gameStats.totalGames + 1));
+                        out.printf("START GAME #%.0f\n", (gameStats.totalGames + 1));
                         hand = new int[0];
                         hand = dArray(hand, rng.nextInt(13) + 1);
                         out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
@@ -68,7 +70,7 @@ public class Blackjack {
                             break;
                     }
                     gameStats.totalGames++;
-                    out.printf("START GAME #%.0f\n",(gameStats.totalGames + 1));
+                    out.printf("START GAME #%.0f\n", (gameStats.totalGames + 1));
                     hand = new int[0];
                     hand = dArray(hand, rng.nextInt(13) + 1);
                     out.println("Your card is a " + numberToFaceCard(hand[hand.length - 1]) + "!");
@@ -186,40 +188,39 @@ public class Blackjack {
     }
 
     private static String numberToFaceCard(int num) {
-        if (num == 1) {
-            return "ACE";
-        } else {
-            if (num == 2) {
+        switch (num) {
+            case 1:
+                return "Ace";
+            case 2:
                 return "2";
-            } else if (num == 3) {
+            case 3:
                 return "3";
-            } else if (num == 4) {
+            case 4:
                 return "4";
-            } else if (num == 5) {
+            case 5:
                 return "5";
-            } else if (num == 6) {
+            case 6:
                 return "6";
-            } else if (num == 7) {
+            case 7:
                 return "7";
-            } else if (num == 8) {
+            case 8:
                 return "8";
-            } else if (num == 9) {
+            case 9:
                 return "9";
-            } else if (num == 10) {
+            case 10:
                 return "10";
-            } else if (num == 11) {
-                return "JACK";
-            } else if (num == 12) {
-                return "QUEEN";
-            } else if (num == 13) {
-                return "KING";
-            }
+            case 11:
+                return "Jack";
+            case 12:
+                return "Queen";
+            case 13:
+                return "King";
+            default:
+                return "invalid";
         }
-        return "Invalid";
     }
 
     private static void Exit() {
-
         /*
          * exit
          * This function is completed and does not need to be modified.
